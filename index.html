@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Air University | Student Portal</title>
+<style>
+:root{--navy:#155477;--blue:#258fc9;--ink:#082b61;--pale:#f3f7fd;--line:#d6dce5}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--pale);color:#152b43}
+.topbar{height:59px;background:linear-gradient(100deg,#155477,#279bd3);color:#fff;display:flex;align-items:center;padding:0 22px;gap:24px;box-shadow:0 2px 6px #0002}
+.brand{font-size:25px;font-weight:700;white-space:nowrap}.hamb{font-size:27px;margin-left:48px}.welcome{margin-left:auto;font-size:14px}
+.layout{display:flex;min-height:calc(100vh - 59px)}
+.sidebar{width:298px;flex-shrink:0;background:#edf1f7;padding:20px 18px;box-shadow:2px 0 8px #0000000b}
+.navitem{height:44px;border-radius:5px;background:#fff;color:#082b61;margin-bottom:5px;display:flex;align-items:center;padding:0 14px;font-size:15px;font-weight:600;gap:12px}
+.navitem .ico{color:#7f9ac7;font-size:18px;width:15px;text-align:center}
+.navitem.active{background:linear-gradient(100deg,#155477,#299bd5);color:white}
+.navitem.active .ico{color:white}
+main{flex:1;min-width:0;padding:20px 21px 55px;position:relative}
+.panel{background:white;border-radius:16px;overflow:hidden;box-shadow:0 14px 28px #00000018;margin-bottom:38px;padding-bottom:48px}
+.hero{height:96px;background:linear-gradient(100deg,#155477,#2c9ed7);display:flex;align-items:center;color:#fff;padding:10px 32px;position:relative}
+.au-logo{width:94px;height:78px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-weight:bold}
+.au-logo .mark{font-size:43px;line-height:39px;letter-spacing:-7px;transform:skew(-12deg)}
+.au-logo small{font-size:8px;letter-spacing:.5px}
+.hero-title{text-align:center;flex:1;margin-right:90px}
+.hero-title h1{font-size:32px;font-weight:500;margin:0 0 5px}
+.hero-title div{font-size:23px}
+.profile{margin:24px 12px 0;background:linear-gradient(100deg,#fff,#1e76a8);border-radius:13px;min-height:182px;display:flex;align-items:center;padding:16px 27px;gap:25px;box-shadow:0 5px 12px #00000016}
+.avatar{width:135px;height:150px;border-radius:50%;background:white;border:1px solid #dbe1e7;box-shadow:0 2px 5px #0002;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.avatar svg{width:100px;height:125px}
+.details{font-size:16px;line-height:2.0;color:#102a43}
+.details b{font-weight:700}
+.content label{display:block;font-weight:700;margin:0 0 9px;font-size:16px}
+select{width:100%;height:39px;border:1px solid #d6dce5;border-radius:6px;background:#fff;padding:0 12px;font-size:15px;color:#333}
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.toolbar .hint{font-size:13px;color:#68798b}
+button{border:0;border-radius:5px;background:#17618b;color:#fff;padding:10px 19px;font-weight:700;font-size:14px;cursor:pointer}
+button:hover{background:#0d496c}
+button:disabled{opacity:.45;cursor:not-allowed}
+.table-wrap{overflow-x:auto;margin-top:15px}
+table{width:100%;border-collapse:collapse;background:white;min-width:600px}
+th,td{border:1px solid #d6dce5;padding:12px 10px;text-align:left;font-size:15px}
+th{font-weight:700;color:#111;background:#fff}
+/* Match the light grey from the reference screenshot, alternating with white. */
+#marksBody tr:nth-child(odd){background:#ECECEC}
+#marksBody tr:nth-child(even){background:#FFFFFF}
+th:first-child,td:first-child{text-align:center;width:12%}
+.empty{text-align:center;color:#657487;padding:25px}
+.footer{position:fixed;bottom:0;left:298px;right:0;background:#f6f9ff;border-top:1px solid #d4e0f3;color:#082b61;text-align:center;padding:14px 8px;font-size:14px}
+@media(max-width:850px){.sidebar{width:205px;padding:14px 10px}.footer{left:205px}.hero-title h1{font-size:23px}.hero-title div{font-size:18px}.profile{gap:15px;padding:14px}.avatar{width:100px;height:115px}.details{font-size:14px}}
+@media(max-width:620px){.sidebar{width:64px;padding:12px 7px}.navitem{justify-content:center;padding:0;font-size:0}.navitem .ico{font-size:19px}.brand{font-size:19px}.hamb{margin-left:0}.footer{left:64px;font-size:11px}main{padding:12px 10px 65px}.hero{padding:8px}.au-logo{width:65px}.hero-title{margin-right:0}.hero-title h1{font-size:18px}.hero-title div{font-size:15px}.profile{flex-direction:column;text-align:center}.details{text-align:left}}
+@media print{
+  @page{size:auto;margin:14mm}
+  body{background:#fff}
+  .topbar,.sidebar,.footer,.toolbar button,.toolbar .hint,.hero,.profile,.content label,select{display:none!important}
+  .layout{display:block;min-height:0}
+  main{padding:0}
+  .panel{box-shadow:none;border-radius:0;margin:0;padding:0}
+  .content{display:block!important}
+  .print-heading{display:block!important}
+  table{min-width:0}
+  th,td{padding:9px}
+}
+.print-heading{display:none;text-align:center;margin:0 0 18px}
+.print-heading h2{margin:0 0 4px}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">⚒ Student Portal</div><div class="hamb">☰</div>
+  <div class="welcome">◉ &nbsp;Welcome⌄</div>
+</header>
+<div class="layout">
+<aside class="sidebar" aria-label="Student portal navigation">
+  <div class="navitem"><span class="ico">▦</span>Dashboard</div>
+  <div class="navitem"><span class="ico">☷</span>Registration Portal</div>
+  <div class="navitem"><span class="ico">♧</span>Roll No Slip</div>
+  <div class="navitem"><span class="ico">◫</span>Registered Courses</div>
+  <div class="navitem"><span class="ico">▣</span>Timetable</div>
+  <div class="navitem"><span class="ico">♧</span>Attendance Report</div>
+  <div class="navitem"><span class="ico">♙</span>Grade Report</div>
+  <div class="navitem active"><span class="ico">▤</span>Marks Report</div>
+  <div class="navitem"><span class="ico">☏</span>AU Facilitation Portal</div>
+  <div class="navitem"><span class="ico">☷</span>Fee System</div>
+  <div class="navitem"><span class="ico">☷</span>QEC Feedback</div>
+  <div class="navitem"><span class="ico">♧</span>AU LMS</div>
+  <div class="navitem"><span class="ico">▰</span>Digital Library</div>
+</aside>
+<main>
+  <section class="panel">
+    <div class="hero">
+      <div class="au-logo"><div class="mark">AU</div><small>AIR UNIVERSITY</small></div>
+      <div class="hero-title"><h1>Air University Islamabad</h1><div>Marks Entry Report</div></div>
+    </div>
+    <div class="profile">
+      <div class="avatar" aria-label="Student profile placeholder">
+        <svg viewBox="0 0 100 125" role="img" aria-hidden="true">
+          <circle cx="50" cy="30" r="24" fill="#4b4b4d"/>
+          <path d="M4 118c4-32 22-49 46-49s42 17 46 49z" fill="#4b4b4d"/>
+        </svg>
+      </div>
+      <div class="details">
+        <div><b>Reg ID:</b> 23*****</div>
+        <div><b>Name:</b> Muhammad Shayan Zafar</div>
+        <div><b>Class:</b> BSAF-F-23-A-913</div>
+        <div><b>Session:</b> FALL-2026</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="print-heading"><h2>Air University Islamabad</h2><div>Marks Report</div><div id="printCourse"></div></div>
+    <div class="toolbar"><div class="hint">Select a course to view its examination marks.</div><button type="button" id="printBtn">Print Report</button></div>
+    <label for="course">Select Course</label>
+    <select id="course">
+      <option value="">-- Select --</option>
+      <option value="ais">F-26-Accounting Information System-1733</option>
+      <option value="advisory">F-26-Advisory Class-1735</option>
+      <option value="capstone">F-26-Capstone Project-I-1732</option>
+      <option value="banking">F-26-Commercial Banking and Lending-1731</option>
+      <option value="modeling">F-26-Financial Modeling-1736</option>
+      <option value="hrm">F-26-Human Resource Management-1734</option>
+      <option value="sfm">F-26-Strategic Financial Management-1737</option>
+    </select>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Sr.No</th><th>Examination Type</th><th>Obtained Marks</th><th>Total Marks</th></tr></thead>
+        <tbody id="marksBody"><tr><td colspan="4" class="empty">Please select a course.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</div>
+<footer class="footer">Copyright © 2002 - 2026 | All Rights Reserved | Developed by Web Administration - Automation Department Air University Islamabad</footer>
+<script>
+const marks = {
+  ais: [
+    ["Assignment-I", 9, 10],
+    ["Assignment-II", 9, 10],
+    ["Quiz-I", 9, 10]
+  ],
+  advisory: [],
+  capstone: [],
+  banking: [
+    ["Assignment-I", 8, 10],
+    ["Assignment-II", 8, 10],
+    ["Mid Term", 40, 50],
+    ["Quiz-I", 5, 5],
+    ["Quiz-II", 3, 5]
+  ],
+  modeling: [],
+  hrm: [
+    ["Assignment-I", 9, 10],
+    ["Assignment-II", 8, 10],
+    ["Quiz-I", 7.5, 10],
+    ["Quiz-II", 9, 10]
+  ],
+  sfm: []
+};
+const course = document.getElementById("course");
+const body = document.getElementById("marksBody");
+const printCourse = document.getElementById("printCourse");
+function render(){
+  const key = course.value;
+  const label = course.options[course.selectedIndex]?.text || "";
+  printCourse.textContent = label ? "Course: " + label : "";
+  if(!key){body.innerHTML='<tr><td colspan="4" class="empty">Please select a course.</td></tr>';return;}
+  if(!marks[key] || marks[key].length === 0){body.innerHTML='';return;}
+  body.innerHTML = marks[key].map((r,i)=>`<tr><td>${i+1}</td><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
+}
+course.addEventListener("change",render);
+document.getElementById("printBtn").addEventListener("click",()=>{
+  if(!course.value){alert("Please select a course before printing.");return;}
+  window.print();
+});
+</script>
+</body>
+</html>
